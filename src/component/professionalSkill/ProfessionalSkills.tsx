@@ -20,9 +20,9 @@ function ProfessionalSkills(): React.ReactElement {
         setSkills([...skills, newSkill]);
     }, [skills])
     
-    // const handleDeleteSkill = useCallback((id) => {
-    //     setSkills(skills.filter((skill) => {return skill.id !== id}))
-    // }, [skills])
+    const handleDeleteSkill = useCallback((id) => {
+        setSkills(skills.filter((skill) => {return skill.id !== id}))
+    }, [skills])
     return (  
         <>
             <Container className="mt-3">
@@ -46,7 +46,7 @@ function ProfessionalSkills(): React.ReactElement {
                             id={skill.id}
                             key={skill.id}
                             skill={skill}
-                            // onDelete={handleDeleteSkill}
+                            onDelete={handleDeleteSkill}
                         />
                     ))}
                     </Card.Body>

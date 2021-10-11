@@ -6,14 +6,14 @@ import { useCallback } from 'react';
 interface Skill {
     id: number;
     skill: ISkill;
-    // onDelete(id: number): void;
+    onDelete(id: number): void;
 }
 
-function ProfessionalSkill({id, skill, }: Skill) {
+function ProfessionalSkill({id, skill, onDelete}: Skill) {
 
-    // // const handleDelete = useCallback(() => {
-    // //     onDelete(id);
-    // // }, [id, onDelete])
+    const handleDelete = useCallback(() => {
+        onDelete(id);
+    }, [id, onDelete])
     return (  
         <>
             <Row className='my-2 d-flex'>
@@ -22,10 +22,10 @@ function ProfessionalSkill({id, skill, }: Skill) {
                     <ProgressBar animated now={skill.skillPercentage} label={`${skill.skillPercentage}%`}/>
                 </Col>
                 
-                {/* <Col>
-                    <Button variant='danger'>Delete</Button>
+                <Col>
+                    <Button variant='danger' onClick={handleDelete}>Delete</Button>
                     <Button variant='warning px-4'>Edit</Button>
-                </Col> */}
+                </Col>
             </Row>
 
         </>
