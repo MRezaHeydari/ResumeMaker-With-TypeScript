@@ -1,0 +1,17 @@
+.card-image {
+   max-width: 70%;
+   min-width: 70%;
+}
+
+.about-me-text {
+   width: 70%;
+}
+
+ul {
+   list-style: none;
+}
+
+li {
+   margin: 0.5rem 0;
+   font-weight: 700;
+}

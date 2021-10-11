@@ -1,10 +1,11 @@
 import React from 'react';
+import InfoPerson from './component/infoPerson/InfoPerson';
 
 function App() {
   return (
-    <div className="App">
-      
-    </div>
+    <>
+      <InfoPerson/>
+    </>
   );
 }
 
