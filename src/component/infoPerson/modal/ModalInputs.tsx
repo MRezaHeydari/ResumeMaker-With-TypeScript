@@ -8,7 +8,7 @@ interface Props {
     onAdd(person: IPerson): void;
 }
 
-const NAME_INPUT = {
+const NAME_INPUT_INFOPERSON = {
     FIRSTNAME: 'first-name',
     LASTNAME: 'last-name',
     AGE: 'age',
@@ -28,22 +28,22 @@ function ModalInputs({onShow, onHide, onAdd}: Props) {
 
     const handleChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
         switch (event.target.name) {
-            case NAME_INPUT.FIRSTNAME:
+            case NAME_INPUT_INFOPERSON.FIRSTNAME:
                 setFirstName(event.target.value); 
                 break;
-            case NAME_INPUT.LASTNAME:
+            case NAME_INPUT_INFOPERSON.LASTNAME:
                 setLastName(event.target.value);
                 break;
-            case NAME_INPUT.AGE:
+            case NAME_INPUT_INFOPERSON.AGE:
                 setAge(Number(event.target.value));
                 break;
-            case NAME_INPUT.MAINLANGUGE:
+            case NAME_INPUT_INFOPERSON.MAINLANGUGE:
                 setMainLanguage(event.target.value);
                 break;
-            case NAME_INPUT.EMAIL:
+            case NAME_INPUT_INFOPERSON.EMAIL:
                 setEmail(event.target.value);
                 break;
-            case NAME_INPUT.ABOUTME:
+            case NAME_INPUT_INFOPERSON.ABOUTME:
                 setAboutMe(event.target.value);
                 break;    
             default:
