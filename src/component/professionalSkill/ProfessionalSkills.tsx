@@ -23,6 +23,10 @@ function ProfessionalSkills(): React.ReactElement {
     const handleDeleteSkill = useCallback((id) => {
         setSkills(skills.filter((skill) => {return skill.id !== id}))
     }, [skills])
+
+    const handleEditSkill = useCallback((id, newSkillName, newSkillPercentage) => {
+        setSkills(skills.map((skill) => (skill.id === id ? {skillName: newSkillName, skillPercentage: newSkillPercentage, id} : skill)))
+    }, [skills])
     return (  
         <>
             <Container className="mt-3">
@@ -47,6 +51,7 @@ function ProfessionalSkills(): React.ReactElement {
                             key={skill.id}
                             skill={skill}
                             onDelete={handleDeleteSkill}
+                            onEdite={handleEditSkill}
                         />
                     ))}
                     </Card.Body>
