@@ -1,7 +1,6 @@
-import * as React from 'react';
 import { ISkill } from './interface/interface';
 import { ProgressBar, Button, Row, Col } from 'react-bootstrap';
-import { useCallback, useState } from 'react';
+import { useCallback, useState, memo } from 'react';
 import ModalInputs from './modal/ModalInputs';
 
 interface Skill {
@@ -51,4 +50,4 @@ function ProfessionalSkill({id, skill, onDelete, onEdite}: Skill) {
     );
 }
 
-export default ProfessionalSkill;
+export default memo(ProfessionalSkill);

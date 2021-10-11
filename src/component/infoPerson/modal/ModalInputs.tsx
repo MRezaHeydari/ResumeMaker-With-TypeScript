@@ -1,5 +1,5 @@
 import { Form, Modal, Button, Row, Col } from 'react-bootstrap';
-import { ChangeEvent, useCallback, useState } from 'react';
+import { ChangeEvent, useCallback, useState, memo } from 'react';
 import { IPerson } from '../interface/Interface';
 
 interface Props {
@@ -126,5 +126,5 @@ function ModalInputs({onShow, onHide, onAdd}: Props) {
     );
 }
 
-export default ModalInputs;
+export default memo(ModalInputs);
 

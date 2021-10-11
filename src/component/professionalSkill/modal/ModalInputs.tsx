@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
-import { useCallback, useState, ChangeEvent } from 'react';
+import { useCallback, useState, ChangeEvent, memo } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 interface Props {
     onShow: boolean;
@@ -22,8 +24,12 @@ function ModalInputs({onShow, onHide, onAdd}: Props) {
     }, [])
 
     const handleAddSkill = useCallback(() => {
-        onAdd(skillName, skillPercentage);
-        onHide();
+        if(skillPercentage <= 100 && skillPercentage >= 0) {
+            onAdd(skillName, skillPercentage);
+            onHide();
+        } else {
+            toast.error("The number is out of range");
+        }
     }, [onAdd, onHide, skillName, skillPercentage])
     return (  
         <>
@@ -47,7 +53,7 @@ function ModalInputs({onShow, onHide, onAdd}: Props) {
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="ControlInputSkillPercentage">
                             <Form.Label>Skill Percentage</Form.Label>
-                            <Form.Control type="number" name="skill-percentage" onChange={handleAddInput} />
+                            <Form.Control type="number" min="0" max="100" name="skill-percentage" onChange={handleAddInput} />
                         </Form.Group>
                     </Form>
                     </Modal.Body>
@@ -56,9 +62,11 @@ function ModalInputs({onShow, onHide, onAdd}: Props) {
                         <Button variant='success' onClick={handleAddSkill}>Add</Button>
                     </Modal.Footer>
                 </Modal>
-           
+                <ToastContainer />
         </>
     );
 }
 
-export default ModalInputs;
+export default memo(ModalInputs);
+
+
