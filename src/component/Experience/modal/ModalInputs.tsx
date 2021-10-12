@@ -1,10 +1,10 @@
 import { Modal, Button, Form } from 'react-bootstrap';
-import { useState, ChangeEvent } from 'react';
+import { useState, ChangeEvent, memo } from 'react';
 import { useCallback } from 'react';
 import { toast } from 'react-toastify';
 
 interface Props {
-    Show: boolean;
+    show: boolean;
     onHide(): void;
     onAdd(startTime: string, endTime: string, title: string, description: string): void;
 }
@@ -16,7 +16,7 @@ const NAME_INPUT_EXPERIENCE = {
     DESCRIPTION : 'description'
 }
 
-function ModalInputs({Show, onHide, onAdd}: Props) {
+function ModalInputs({show, onHide, onAdd}: Props) {
 
     const [startTime, setStartTime] = useState<string>('');
     const [endTime, setEndTime] = useState<string>('');
@@ -58,7 +58,7 @@ function ModalInputs({Show, onHide, onAdd}: Props) {
     return (  
         <>
             <Modal
-                show={Show}
+                show={show}
                 size="lg"
                 aria-labelledby="contained-modal-title-vcenter"
                 centered
@@ -97,4 +97,4 @@ function ModalInputs({Show, onHide, onAdd}: Props) {
     );
 }
 
-export default ModalInputs;
+export default memo(ModalInputs);

@@ -40,7 +40,7 @@ function ProfessionalSkills(): React.ReactElement {
         <>
             <Container className="mt-3">
                 <ModalInputs 
-                    Show={modalShow}
+                    show={modalShow}
                     onHide={handleModalShow}
                     onAdd={handleAddSkill}
                 />
@@ -60,7 +60,7 @@ function ProfessionalSkills(): React.ReactElement {
                             key={skill.id}
                             skill={skill}
                             onDelete={handleDeleteSkill}
-                            onEdite={handleEditSkill}
+                            onEdit={handleEditSkill}
                         />
                     ))}
                     </Card.Body>

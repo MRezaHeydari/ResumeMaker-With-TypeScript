@@ -5,7 +5,7 @@ import { IExpreince } from './interface/interface';
 import Experience from './Expereince';
 import { toast } from 'react-toastify';
 
-function Experiences() {
+function Experiences (): React.ReactElement {
     const [modalShow, setModalShow] = useState<boolean>(false);
     const [experiences, setExperiences] = useState<IExpreince[]>([]);
 
@@ -21,12 +21,25 @@ function Experiences() {
             toast.error('This experience has already been registered')
         }
     }, [experiences])
-    console.log(experiences);
+    
+    const handelDeleteExpreince = useCallback((id) => {
+        setExperiences(experiences.filter((experience) =>{ return experience.id !== id}))
+    }, [experiences])
+
+    const handelEditExpreince = useCallback((id, startTime, endTime, title, description) => {
+        if(!experiences.find((experience) => experience.title === title)) {
+            setExperiences(experiences.map((experience) => (
+                experience.id === id ? ({startTime, endTime, title, description, id}) : (experience)
+            )))
+        } else {
+            toast.error('This experience has already been registered')
+        }
+    }, [experiences])
     return (  
         <>
             <Container className="mt-3">
                 <ModalInputs 
-                    Show={modalShow}
+                    show={modalShow}
                     onHide={handleModalShow}
                     onAdd={handleAddExpreince}
                 />
@@ -43,6 +56,8 @@ function Experiences() {
                                 id={experience.id}
                                 key={experience.id}
                                 experiences={experience}
+                                onDelete={handelDeleteExpreince}
+                                onEdit={handelEditExpreince}
                             />
                         ))}
                     </Card.Body>

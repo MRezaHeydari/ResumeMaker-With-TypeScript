@@ -3,12 +3,12 @@ import { useCallback, useState, ChangeEvent, memo } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 
 interface Props {
-    Show: boolean;
+    show: boolean;
     onHide(): void;
     onAdd(skillName: string, skillPercentAge: number): void;
 }
 
-function ModalInputs({Show, onHide, onAdd}: Props) {
+function ModalInputs({show, onHide, onAdd}: Props) {
 
     const [skillName, setSkillName] = useState<string>('');
     const [skillPercentage, setSkillPercentage] = useState<number>(0);
@@ -33,7 +33,7 @@ function ModalInputs({Show, onHide, onAdd}: Props) {
         <>
             
             <Modal
-            show={Show}
+            show={show}
             size="lg"
             aria-labelledby="contained-modal-title-vcenter"
             centered

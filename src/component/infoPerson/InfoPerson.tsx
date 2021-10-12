@@ -16,7 +16,7 @@ function InfoPerson (): React.ReactElement {
         <>
             <Container className="mt-3">   
                 <ModalInputs 
-                    Show={modalShow}
+                    show={modalShow}
                     onHide={handleModalShow}
                     onAdd={setPerson}
                 />             

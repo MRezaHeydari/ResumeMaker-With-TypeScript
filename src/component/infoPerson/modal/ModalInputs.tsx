@@ -3,7 +3,7 @@ import { ChangeEvent, useCallback, useState, memo } from 'react';
 import { IPerson } from '../interface/Interface';
 
 interface Props {
-    Show: boolean;
+    show: boolean;
     onHide(): void;
     onAdd(person: IPerson): void;
 }
@@ -17,7 +17,7 @@ const NAME_INPUT_INFOPERSON = {
     ABOUTME: 'about-me'
 }
 
-function ModalInputs({Show, onHide, onAdd}: Props) {
+function ModalInputs({show, onHide, onAdd}: Props) {
     
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -57,7 +57,7 @@ function ModalInputs({Show, onHide, onAdd}: Props) {
     return (  
         <>
             <Modal
-                show={Show}
+                show={show}
                 size="lg"
                 aria-labelledby="contained-modal-title-vcenter"
                 centered

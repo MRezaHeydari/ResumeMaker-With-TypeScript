@@ -7,10 +7,13 @@ interface Skill {
     id: number;
     skill: ISkill;
     onDelete(id: number): void;
-    onEdite(id: number, newSkillName: string, newSkillPercentage: number): void;
+    onEdit(
+        id: number, 
+        newSkillName: string, 
+        newSkillPercentage: number): void;
 }
 
-function ProfessionalSkill({id, skill, onDelete, onEdite}: Skill) {
+function ProfessionalSkill({id, skill, onDelete, onEdit}: Skill) {
 
     const [modalShow, setModalShow] = useState<boolean>(false);
 
@@ -23,8 +26,8 @@ function ProfessionalSkill({id, skill, onDelete, onEdite}: Skill) {
     }, [id, onDelete])
 
     const handleEdit = useCallback((newSkillName, newSkillPercenteage) => {
-        onEdite(id, newSkillName, newSkillPercenteage);
-    }, [id, onEdite])
+        onEdit(id, newSkillName, newSkillPercenteage);
+    }, [id, onEdit])
     return ( 
         <>
             <Row className='my-2 d-flex'>
@@ -38,7 +41,7 @@ function ProfessionalSkill({id, skill, onDelete, onEdite}: Skill) {
                     <Button variant='warning px-4' onClick={handleModalShow}>Edit</Button>
                     <div>
                         <ModalInputs 
-                            Show={modalShow}
+                            show={modalShow}
                             onHide={handleModalShow}
                             onAdd={handleEdit}
                         />
