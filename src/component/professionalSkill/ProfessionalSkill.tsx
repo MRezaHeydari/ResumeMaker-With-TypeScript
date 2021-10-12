@@ -38,7 +38,7 @@ function ProfessionalSkill({id, skill, onDelete, onEdite}: Skill) {
                     <Button variant='warning px-4' onClick={handleModalShow}>Edit</Button>
                     <div>
                         <ModalInputs 
-                            onShow={modalShow}
+                            Show={modalShow}
                             onHide={handleModalShow}
                             onAdd={handleEdit}
                         />

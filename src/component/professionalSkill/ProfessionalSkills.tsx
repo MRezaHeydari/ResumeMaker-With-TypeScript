@@ -6,7 +6,6 @@ import ModalInputs from './modal/ModalInputs';
 import { useCallback } from 'react';
 import ProfessionalSkill from './ProfessionalSkill';
 import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 function ProfessionalSkills(): React.ReactElement {
     const [modalShow, setModalShow] = useState<boolean>(false);
@@ -41,7 +40,7 @@ function ProfessionalSkills(): React.ReactElement {
         <>
             <Container className="mt-3">
                 <ModalInputs 
-                    onShow={modalShow}
+                    Show={modalShow}
                     onHide={handleModalShow}
                     onAdd={handleAddSkill}
                 />
