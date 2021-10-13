@@ -14,7 +14,8 @@ const NAME_INPUT_INFOPERSON = {
     AGE: 'age',
     MAINLANGUGE: 'main-languge',
     EMAIL: 'email',
-    ABOUTME: 'about-me'
+    ABOUTME: 'about-me',
+    IMAGE: 'image'
 }
 
 function ModalInputs({show, onHide, onAdd}: Props) {
@@ -25,6 +26,7 @@ function ModalInputs({show, onHide, onAdd}: Props) {
     const [mainLanguage, setMainLanguage] = useState('');
     const [email, setEmail] = useState('');
     const [aboutMe, setAboutMe] = useState('');
+    const [image, setImage] = useState<File | string>();
 
     const handleChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
         switch (event.target.name) {
@@ -45,15 +47,21 @@ function ModalInputs({show, onHide, onAdd}: Props) {
                 break;
             case NAME_INPUT_INFOPERSON.ABOUTME:
                 setAboutMe(event.target.value);
-                break;    
+                break;
+            case NAME_INPUT_INFOPERSON.IMAGE:
+                const files = (event.currentTarget as HTMLInputElement).files
+                if (files && files.length > 0) {
+                    setImage(URL.createObjectURL(files[0]));
+                }
+                break;      
         }
     }, [])
 
     const handleAddPerson = useCallback(() => {
-        const person : IPerson = {firstName, lastName, age, mainLanguage, email, aboutMe, id: Date.now()}
+        const person : IPerson = {firstName, lastName, age, mainLanguage, email, aboutMe, image, id: Date.now()}
         onAdd(person);
         onHide();
-    }, [aboutMe, age, email, firstName, lastName, mainLanguage, onAdd, onHide]);
+    }, [aboutMe, age, email, firstName, image, lastName, mainLanguage, onAdd, onHide]);
     return (  
         <>
             <Modal
@@ -102,6 +110,12 @@ function ModalInputs({show, onHide, onAdd}: Props) {
                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                 <Form.Label>Email</Form.Label>
                                 <Form.Control type="email" name="email" onChange={handleChange} placeholder="" />
+                            </Form.Group>
+                        </Col>
+                        <Col>
+                            <Form.Group className="mb-3" controlId="formBasicImage">
+                                <Form.Label>Image</Form.Label>
+                                <Form.Control type="file" name="image" onChange={handleChange} placeholder="" />
                             </Form.Group>
                         </Col>
                     </Row>
