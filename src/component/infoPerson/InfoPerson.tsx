@@ -11,7 +11,7 @@ function InfoPerson (): React.ReactElement {
     const handleModalShow = useCallback(() => {
         setModalShow(!modalShow);
     }, [modalShow]);
-
+    console.log(person);
     return (  
         <>
             <Container className="mt-3">   
@@ -29,7 +29,7 @@ function InfoPerson (): React.ReactElement {
                     </Card.Header>
                     <Row>
                         <Col md={4}>
-                            <Card.Img variant="top" src="./images/image1.jpg" className="card-image"/>
+                            <Card.Img variant="top" src={`${person?.image}`} className="card-image"/>
                         </Col>
                         <Col md={8}>
                             <Card.Body>
