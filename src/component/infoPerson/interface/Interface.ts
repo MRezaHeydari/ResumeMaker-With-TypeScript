@@ -5,5 +5,6 @@ export interface IPerson {
     mainLanguage: string;
     email: string;
     aboutMe: string;
+    image?: File | string;
     id: number;
 }
